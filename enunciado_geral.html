@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>DistroLeilao Inc. — Missão de Campo</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=IBM+Plex+Mono:wght@400;600&display=swap');
+
+  :root {
+    --bg:      #0a0a0f;
+    --surface: #13131a;
+    --border:  #2a2a3a;
+    --accent:  #e8c547;
+    --danger:  #e85447;
+    --muted:   #555570;
+    --text:    #dddde8;
+    --mono:    'IBM Plex Mono', monospace;
+    --sans:    'Syne', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.7;
+    padding: 2rem 1rem 6rem;
+  }
+  .wrapper { max-width: 820px; margin: 0 auto; }
+
+  header { border-bottom: 1px solid var(--border); padding-bottom: 2rem; margin-bottom: 3rem; }
+  .tag { font-family: var(--mono); font-size: .72rem; color: var(--accent); letter-spacing: .18em; text-transform: uppercase; margin-bottom: .8rem; }
+  h1 { font-size: clamp(2rem, 6vw, 3.4rem); font-weight: 800; line-height: 1.1; color: #fff; }
+  h1 span { color: var(--accent); }
+  .subtitle { margin-top: .8rem; font-family: var(--mono); font-size: .9rem; color: var(--muted); }
+
+  .alert { border: 1px solid var(--danger); background: #1a0e0e; border-radius: 6px; padding: 1.2rem 1.4rem; margin-bottom: 2.8rem; font-family: var(--mono); font-size: .85rem; color: #f0a09a; }
+  .alert strong { color: var(--danger); }
+
+  section { margin-bottom: 3rem; }
+  h2 { font-size: 1.1rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .12em; margin-bottom: 1.2rem; display: flex; align-items: center; gap: .6rem; }
+  h2::before { content: ''; display: inline-block; width: 8px; height: 8px; background: var(--accent); border-radius: 50%; }
+  p { margin-bottom: 1rem; color: var(--text); }
+  code { font-family: var(--mono); font-size: .85em; background: #1e1e2e; padding: .1em .4em; border-radius: 3px; color: #aad4f5; }
+
+  .context-box { background: var(--surface); border-left: 3px solid var(--accent); border-radius: 0 6px 6px 0; padding: 1.4rem 1.6rem; font-style: italic; margin-bottom: 1.6rem; color: #c8c8d8; }
+
+  .hint-box { background: #0e1a0e; border: 1px solid #2a4a2a; border-radius: 6px; padding: 1.2rem 1.4rem; margin: 1.4rem 0; }
+  .hint-box .hint-title { font-family: var(--mono); font-size: .75rem; color: #6abf6a; letter-spacing: .1em; text-transform: uppercase; margin-bottom: .6rem; }
+  .hint-box p { font-size: .88rem; color: #a8c8a8; margin: 0; }
+
+  .phases { display: grid; gap: 1rem; }
+  .phase { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.2rem 1.4rem; display: grid; grid-template-columns: 2.4rem 1fr; gap: 0 1rem; align-items: start; }
+  .phase-num { font-family: var(--mono); font-size: 1.5rem; font-weight: 600; color: var(--accent); line-height: 1; padding-top: .1rem; }
+  .phase h3 { font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: .4rem; }
+  .phase p { font-size: .9rem; margin: 0; color: #aaaabc; }
+
+  .rules { list-style: none; display: grid; gap: .6rem; }
+  .rules li { font-family: var(--mono); font-size: .84rem; padding: .7rem 1rem; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; color: #b8b8cc; }
+  .rules li::before { content: '→  '; color: var(--accent); }
+
+  .deliverables { display: grid; gap: .8rem; }
+  .deliverable { display: flex; gap: 1rem; align-items: flex-start; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 1rem 1.2rem; }
+  .d-icon { font-size: 1.4rem; line-height: 1; flex-shrink: 0; }
+  .deliverable h4 { font-size: .95rem; color: #fff; margin-bottom: .2rem; }
+  .deliverable p  { font-size: .83rem; color: #9090a8; margin: 0; }
+
+  .quote { border-left: 3px solid var(--muted); padding: .8rem 1.2rem; margin: 1.4rem 0; font-style: italic; color: #9090a8; font-size: .95rem; }
+
+  footer { margin-top: 4rem; border-top: 1px solid var(--border); padding-top: 1.4rem; font-family: var(--mono); font-size: .75rem; color: var(--muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: .4rem; }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <header>
+    <p class="tag">Sistemas Distribuídos — Trabalho Prático · SD@2026</p>
+    <h1>DistroLeilao <span>Inc.</span></h1>
+    <p class="subtitle">// missão de campo · prazo: sexta-feira · nível: engenheiro júnior</p>
+  </header>
+
+  <div class="alert">
+    <strong>ATENÇÃO:</strong> cada dupla recebeu uma instância diferente do sistema.
+    Trocar código com outras duplas <strong>não vai resolver o seu problema</strong> —
+    e você vai descobrir isso da pior forma possível.
+  </div>
+
+  <section>
+    <h2>Contexto</h2>
+    <div class="context-box">
+      Você foi contratado como engenheiro júnior na <strong>DistroLeilao Inc.</strong>,
+      uma startup que opera leilões online em tempo real com compradores conectados
+      de diferentes regiões do país. O sistema está em produção e clientes estão
+      reportando resultados incorretos — leilões sendo vencidos pelo comprador errado,
+      lances desaparecendo sem explicação, ou vencedores que ninguém reconhece.
+      <br><br>
+      O engenheiro sênior saiu de férias. O CTO está nervoso. Você tem até sexta-feira.
+    </div>
+
+    <p>
+      O repositório do sistema está disponível no Classroom. Ele contém três arquivos:
+      <code>auctioneer.py</code> (servidor leiloeiro), <code>buyer.py</code> (comprador),
+      <code>simulate.py</code> (simulação automática) e um misterioso <code>network.py</code>.
+      Rode, observe, quebre, entenda.
+    </p>
+
+    <div class="hint-box">
+      <p class="hint-title">🧠 Lembre-se do que já discutimos em aula</p>
+      <p>
+        Já vimos que em sistemas distribuídos <strong>não existe relógio global</strong> —
+        cada nó tem sua própria percepção do tempo. Já vimos também que
+        <strong>falhas parciais</strong> acontecem: servidores funcionam, mas a rede entre
+        eles some. A pergunta não é <em>se</em> algo vai falhar. A pergunta é <em>quando</em>.<br><br>
+        O que você ainda não tem é uma ferramenta para lidar com isso. É o que você vai descobrir.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>O que fazer</h2>
+    <div class="phases">
+      <div class="phase">
+        <span class="phase-num">1</span>
+        <div>
+          <h3>Reproduza a falha</h3>
+          <p>Execute o sistema várias vezes e colete logs que demonstrem o comportamento incorreto.
+          A falha pode não aparecer na primeira execução — isso também faz parte do problema e
+          da sua análise.</p>
+        </div>
+      </div>
+      <div class="phase">
+        <span class="phase-num">2</span>
+        <div>
+          <h3>Diagnostique a causa raiz</h3>
+          <p>Explique <em>por que</em> o sistema falha — não apenas o quê. Por que o
+          <code>timestamp</code> atual não é suficiente para garantir a ordem correta dos eventos?
+          O que falta no modelo?</p>
+        </div>
+      </div>
+      <div class="phase">
+        <span class="phase-num">3</span>
+        <div>
+          <h3>Proponha e implemente a solução</h3>
+          <p>Desenhe a solução antes de codar. A implementação precisa ser justificada —
+          não basta funcionar, precisa fazer sentido. Se você encontrar um conceito novo
+          durante a pesquisa, explique como ele se conecta ao problema que você diagnosticou.</p>
+        </div>
+      </div>
+      <div class="phase">
+        <span class="phase-num">4</span>
+        <div>
+          <h3>Prove que funcionou</h3>
+          <p>Logs lado a lado: sistema com falha vs. sistema corrigido, usando o
+          <strong>mesmo cenário de teste</strong>. Sem evidência reproduzível, não conta.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="quote">
+      "Programar sistemas distribuídos é programar em um ambiente onde você nunca sabe
+      exatamente o que está acontecendo." — aula I
+    </div>
+  </section>
+
+  <section>
+    <h2>Entregáveis</h2>
+    <div class="deliverables">
+      <div class="deliverable">
+        <span class="d-icon">📄</span>
+        <div>
+          <h4>Relatório técnico (PDF)</h4>
+          <p>Diagnóstico da falha com evidências, proposta de solução com justificativa técnica,
+          e — obrigatoriamente — uma análise do que <em>ainda pode falhar</em> mesmo após a correção.</p>
+        </div>
+      </div>
+      <div class="deliverable">
+        <span class="d-icon">💻</span>
+        <div>
+          <h4>Código corrigido</h4>
+          <p>Arquivos modificados com comentários explicando cada mudança. O <code>simulate.py</code>
+          não pode ser alterado — ele é a bancada de testes oficial.</p>
+        </div>
+      </div>
+      <div class="deliverable">
+        <span class="d-icon">📋</span>
+        <div>
+          <h4>Logs de evidência</h4>
+          <p>Log da falha reproduzida + log do sistema corrigido com o mesmo cenário.
+          Prints de tela ou arquivos <code>.txt</code> são aceitos.</p>
+        </div>
+      </div>
+      <div class="deliverable">
+        <span class="d-icon">🎤</span>
+        <div>
+          <h4>Defesa oral (5 min por dupla)</h4>
+          <p>Cada membro responde individualmente. As perguntas serão sobre o comportamento
+          específico do <em>seu</em> sistema — não sobre o das outras duplas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Regras do jogo</h2>
+    <ul class="rules">
+      <li>Não modifique <code>simulate.py</code> — ele define o cenário oficial de teste</li>
+      <li>A solução deve funcionar sem alterar a estrutura de comunicação por sockets</li>
+      <li>Se usou ferramenta de IA, descreva no relatório exatamente como e por quê</li>
+      <li>A defesa oral vale mais que o código — entender é obrigatório</li>
+      <li>Plágio entre duplas = nota zero para ambas, mesmo que o código seja "diferente"</li>
+    </ul>
+  </section>
+
+  <footer>
+    <span>DistroLeilao Inc. — Trabalho Prático · SD@2026 · Prof. João Luiz</span>
+    <span>prazo: sexta-feira, fim do dia</span>
+  </footer>
+
+</div>
+</body>
+</html>
